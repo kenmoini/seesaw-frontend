@@ -1,3 +1,68 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.header-holder {
+  width: 100%;
+  height: 40vh;
+}
+.header-content {
+  padding: 0rem;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  position: relative;
+}
+.header-content .header-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  background: rgba(0,0,0,0.25);
+  padding: 1rem 3rem 1rem 2rem;
+}
+.header-content .header-description {
+  font-size: 1rem;
+  color: #fff;
+  background: rgba(0,0,0,0.5);
+  padding: 1rem 3rem 1rem 2rem;
+  width:100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.background-img {
+  background: url("https://bctulsa.com/wp-content/uploads/2018/06/header-banner-sample.png") center center / cover;
+  width:100%;
+  height:100%;
+  float:left;
+}
+.overlay-gradient {
+  background: rgb(2,0,36);
+  background: linear-gradient(149deg, rgba(2,0,36,0.45) 0%, rgba(9,9,121,0.45) 35%, rgba(0,212,255,0.45) 100%);
+  width: 100%;
+  height: 100%;
+  float: left;
+}
+
+/* Inspiration: https://cssgradient.io/swatches/ */
+.overlay-gradient.disco {
+  background: #FC466B;
+  background: linear-gradient(150deg, rgba(252,70,107,0.45) 10%, rgba(63, 94, 251,0.45) 90%);
+}
+.overlay-gradient.ocean {
+  background: #1CB5E0;
+  background: linear-gradient(150deg, rgba(28, 181, 224,0.45) 10%, rgba(0, 8, 81,0.45) 90%);
+}
+.overlay-gradient.kale {
+  background: #00C9FF;
+  background: linear-gradient(150deg, rgba(0, 201, 255, 0.45) 10%, rgba(146, 254, 157, 0.45) 90%);
+}
+.overlay-gradient.retro {
+  background: #FDBB2D;
+  background: linear-gradient(150deg, rgba(253, 187, 45, 0.45) 10%, rgba(34, 193, 195, 0.45) 90%);
+}
+.overlay-gradient.fresco {
+  background: #FDBB2D;
+  background: linear-gradient(150deg, rgba(253, 187, 45, 0.45) 10%, rgba(58, 28, 113, 0.45) 90%);
+}

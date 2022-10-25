@@ -1,16 +1,17 @@
 <x-app-layout>
   <div class="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
-      <h2 class="text-xl">Create a new Thread</h2>
+      <h2 class="text-xl">Edit Thread - {{ $thread->title }}</h2>
       <hr class="mt-2 mb-3 py-2" />
-      <form method="POST" action="{{ route('threads.store') }}">
+      <form method="POST" action="{{ route('threads.update', $thread) }}">
           @csrf
+          @method('patch')
           <x-input-label for="title" value="Title" />
           <input type="text" name="title" id="title" class="w-full border border-gray-300 rounded p-2 mb-4">
 
           <x-input-label for="message" value="Message" />
           <textarea name="message" id="message"
               class="block w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm"
-          >{{ old('message') }}</textarea>
+          >{{ old('message', $thread->body) }}</textarea>
 
           <hr class="my-4" />
 
