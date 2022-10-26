@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ThreadController;
+use App\Http\Controllers\SettingController;
 
 use Illuminate\Support\Facades\Route;
 
@@ -16,18 +17,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+  return view('welcome');
+})->name('home');
+
+//==============================================================================
+// Admin Routes
+//==============================================================================
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'verified']], function(){
+
+  Route::get('/dashboard', function () {
+      return view('dashboard');
+  })->name('dashboard');
+
+  //============================================================================
+  // Thread Routes
+  //============================================================================
+  // CRUD Resource Routes
+  Route::resource('threads', ThreadController::class)->name('*', 'threads');  
+  
+  // Add Post to Thread Route
+  Route::post('/threads/{id}/add-post', 'App\Http\Controllers\ThreadController@addPost')->middleware(['auth', 'verified'])->name('threads.addPost');
+
+  //============================================================================
+  // Settings Routes
+  //============================================================================
+  // CRUD Resource Routes
+  Route::resource('settings', SettingController::class)->name('*', 'settings'); 
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-// Thread Routes
-Route::resource('threads', ThreadController::class)
-//->only(['index', 'create', 'store'])
-->middleware(['auth', 'verified'])->name('*', 'threads');
-
-Route::post('/threads/{id}/add-post', 'App\Http\Controllers\ThreadController@addPost')->middleware(['auth', 'verified'])->name('threads.addPost');
 
 require __DIR__.'/auth.php';
